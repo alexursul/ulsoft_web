@@ -1,0 +1,97 @@
+$accent: #66FCF1;
+$accent2: #47B7B2;
+$link: #45A29E;
+$primary: #1F2833;
+$primary2: #27323F;
+$comment: #DADADA;
+$secondary: #C5C6C7;
+$base: #FFFFFF;
+$counter: #0B0C10;
+$danger: #FF0C10;
+
+
+body, body #app {
+    background: $primary;
+    color: $base;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+
+    a {
+        color: $base;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+    
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+#app {
+    .ul-panel {
+        background-color: rgba($primary, 0.86);
+        padding: 25px 26px;
+        color: $base;
+        border-radius: 15px;
+    }
+
+    
+    /// FONTS
+    h1, h2, h3 {
+        font-family: 'Gotham', sans-serif;
+    }
+
+    h1 {
+        font-size: 100px;
+        font-weight: 700;
+        line-height: 120px;
+        text-align: left;
+        background: linear-gradient(180deg, #64F6EB 24.18%, #46A29F 104.4%);
+        text-shadow: 2px 2px 10px rgba(#46A29F, 0.3);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 65px;
+    }
+
+    h3 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 39px;
+    }
+
+    h4 {
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 31.2px;
+    }
+
+    /// CONTROLS
+    button {
+        background: linear-gradient(180deg, $accent 0%, $accent2 100%);
+        font-family: 'Gotham', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.2px;
+        color: $base;
+        padding: 15px 30px;
+        border-radius: 10px;
+        border: none;
+
+        &:hover {
+            background: linear-gradient(180deg, darken($accent, 20%) 0%, darken($accent2, 15%) 100%);
+        }
+
+        &:active {
+            background: linear-gradient(180deg, darken($accent, 25%) 0%, darken($accent2, 20%) 100%); 
+        }
+    }
+}
+
