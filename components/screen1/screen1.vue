@@ -5,18 +5,18 @@
                 <div class="row" id="panel-corner">
                     <div class="col-4" >
                         <a href="/" title="ulsoft.pro" id="logo-img">
-                            <img src="/img/icons/logo.png" height="63" />
+                            <img src="/img/icons/logo.png" height="63" alt="ULSoft" />
                         </a>
                     </div>
                     <div class="col text-end">
                         <div class="ul-panel contacts">
                             <div class="d-flex">
-                                <a :href="'mailto:' + email" title="Написать на почту" class="d-flex me-4" target="_blank">
-                                    <img src="/img/svg/mail.svg" width="24" height="24" />
+                                <a :href="'mailto:' + email" title="Написать нам на почту" class="d-flex me-4" target="_blank">
+                                    <img src="/img/svg/mail.svg" width="24" height="24" alt="E-mail" />
                                     <span class="d-none d-lg-inline">{{ email }}</span>
                                 </a>
-                                <a :href="'tel:' + phone" title="Позвонить" target="_blank">
-                                    <img src="/img/svg/phone.svg" width="24" height="24" />
+                                <a :href="'tel:' + phone" title="Позвонить нам" target="_blank">
+                                    <img src="/img/svg/phone.svg" width="24" height="24" alt="Phone" />
                                     <span class="d-none d-lg-inline">{{ phone }}</span>
                                 </a>
                             </div>
@@ -50,10 +50,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- <img src="/img/svg/panel1_xxl.svg" class="panel1-svg d-none d-xxl-block" />
-                <img src="/img/svg/panel1_xl.svg" class="panel1-svg d-none d-xl-block d-xxl-none" />
-                <img src="/img/svg/panel1_lg.svg" class="panel1-svg d-block d-xl-none d-xxl-none" /> -->
             </div>
         </div>
     </div>

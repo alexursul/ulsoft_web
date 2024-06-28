@@ -52,6 +52,7 @@ defineExpose({
 .input-error {
     padding-top: 6px;
     color: main.$danger;
+    font-size: 14px;
 }
 
 </style>

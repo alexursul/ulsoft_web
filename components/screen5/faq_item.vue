@@ -1,6 +1,6 @@
 <template>
 <div class="ul-panel panel-sm faq-item" ref="item" :id="id">
-    <a href="javascript:void(0)" @click="toggleShow" class="d-flex flex-row justify-content-between toggle-link">
+    <a href="javascript:void(0)" @click="toggleShow" class="d-flex flex-row justify-content-between toggle-link" title="Раскрыть пункт FAQ">
         <p class="pe-3">{{ title }}</p>
         <img src="/img/svg/arrow.svg" alt="Раскрыть" />
     </a>

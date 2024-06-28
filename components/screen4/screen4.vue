@@ -21,22 +21,22 @@
 
             <div class="ul-panel tusk-panel d-flex flex-xl-row flex-column">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-lg-6 mb-xl-4">
                         <div class="d-flex align-items-center company-name">
                             <img src="/img/icons/logo.png" height="63" />
                             <h3 class="pt-2 mt-1 ps-3">UL Soft</h3>
                         </div>
-                        <h2>Успешный продукт, которым вы можете начать пользоваться прямо сейчас</h2>
-                        <div class="mb-3 pt-2">
-                            <a :href="tuskAppStoreUrl" title="Скачать Tusk в App Store" class="me-4" target="_blank">
+                        <h3>Успешный продукт, которым вы можете начать пользоваться прямо сейчас</h3>
+                        <div class="d-flex flex-column flex-md-row pt-2">
+                            <a :href="tuskAppStoreUrl" title="Скачать Tusk в App Store" class="me-4 mb-3" target="_blank">
                                 <img src="/img/icons/appstore.png" height="45" alt="Tusk в App Store" />
                             </a>
-                            <a :href="tuskGooglePlayUrl" title="Скачать Tusk в Google Play" target="_blank">
+                            <a :href="tuskGooglePlayUrl" title="Скачать Tusk в Google Play" target="_blank" class="mb-3">
                                 <img src="/img/icons/googleplay.png" height="45" alt="Tusk в Google Play" />
                             </a>
                         </div>
                     </div>
-                    <div class="col d-flex align-content-end align-items-end justify-content-center">
+                    <div class="col-12 col-lg-6 d-flex align-content-end align-items-end justify-content-center">
                         <img src="/img/tusk_app.png" width="400" class="mt-5" alt="Приложение Tusk" />
                     </div>
                 </div>
@@ -94,6 +94,24 @@ const tuskGooglePlayUrl = vars.TUSK_GOOGLE_PLAY_URL;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+    }
+
+    // // Medium devices (tablets, less than 992px)
+    @media (max-width: 991.98px) {
+        > .container > .ul-panel 
+        {
+            padding: 40px 30px;
+        }
+
+        > .container > .tusk-panel {
+            padding-bottom: 0;
+
+            h2 {
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 39px;
+            }
         }
     }
 }

@@ -64,7 +64,7 @@
 #screen5 {
    margin-top: 100px;
    background: url('/img/bg/bg3.png');
-   background-size: 100% 260px;
+   background-size: 100% 450px;
    background-position-y: bottom;
    background-repeat: no-repeat;
 
@@ -117,4 +117,6 @@
         }
     }
 }
+
+
 </style>

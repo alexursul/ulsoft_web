@@ -17,7 +17,7 @@
                                     <p>Визитки, лендинги, Интернет-магазины, Корпоративные сайты, Готовые решения</p>
                                 </Screen2Service>
                                 <div class="d-flex flex-column">
-                                    <div class="d-flex flex-column flex-md-row">
+                                    <div class="d-flex flex-column flex-md-row services-row">
                                         <Screen2Service title="Реклама" price="150 000">
                                             <p>визитки, лендинги, интернет-магазины, корпоративные сайты и тд</p>
                                         </Screen2Service>
@@ -55,7 +55,7 @@ $gapSize: 20px;
 
 #screen2 {
     .screen3-title {
-        padding-top: 100px;
+        padding-top: 70px;
     }
 
     .wrap {
@@ -85,6 +85,10 @@ $gapSize: 20px;
             > .service {
                 margin-top: $gapSize;
             }
+        }
+
+        .services-row > .service {
+            min-width: 300px;
         }
     }
 

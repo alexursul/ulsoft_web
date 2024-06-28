@@ -130,5 +130,18 @@ body, body #app {
     input, textarea {
         border-color: transparent;
     }
+
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: 575.98px) { 
+        h1 {
+            font-size: 60px;
+            line-height: 80px;
+        }
+
+        h2 {
+            font-size: 38px;
+            line-height: 50px;
+        }
+    }
 }
 

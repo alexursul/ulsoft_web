@@ -8,8 +8,9 @@
                 error="Обязательное поле"
                 ref="nameInput"
             />
-            <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column flex-md-row justify-content-between phone-email-row">
                 <SubmitFormTextInput 
+                    class="my-3 my-md-0"
                     hint="Телефон*" 
                     v-model="state.phone" 
                     :validation="phoneRegexp" 
@@ -19,6 +20,7 @@
 
                 <SubmitFormTextInput 
                     hint="Эл. адрес*" 
+                    class="mb-3 my-md-0"
                     v-model="state.email" 
                     :validation="emailRegexp" 
                     error="Неправильный эл. адрес"
@@ -26,7 +28,7 @@
                 />
             </div>
             <textarea class="input ul-panel panel-sm" rows="5" hint="Сообщение" v-model="state.message" />
-            <div class="button-row d-flex flex-row align-items-center justify-content-between">
+            <div class="button-row d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                 <div class="me-4">
                     <input
                             type="file"
@@ -37,22 +39,25 @@
                             capture
                         />
                     <a href="javascript:void(0)" @click="fileInput.click()"  v-if="state.file == null" title="Прикрепить файл">
-                        <img src="/img/icons/anchor.png" height="26" class="me-2 d-block" alt="Прикрепить файл" />
+                        <img src="/img/icons/anchor.png" height="26" class="me-2" alt="Прикрепить файл" />
                         <span>Прикрепить файл</span>
                     </a>
                     <div v-if="state.file != null" class="d-flex attachment-box align-items-baseline">
-                        <a href="javascript:void(0)" @click="state.file = null" class="delete-attachment me-2" title="Удалить прикрепление">
+                        <a href="javascript:void(0)" @click="state.file = null" class="delete-attachment me-3" title="Удалить прикрепление">
                             <img src="/img/svg/close.svg" width="16" alt="Удалить прикрепление" />
                         </a>
                         <span>{{ shortenedName(state.file.name) }} ({{(parseFloat(state.file.size) / 1024.0 / 1024.0).toFixed(2) }} Мб)</span>
                     </div>
-                    <p>
+                    <p v-if="state.file == null">
                         Формат: jpg, pdf, docx. Размером не более 5 Мб
                     </p>
                 </div>
-                <button type="button" @click="submitForm()">Отправить заявку</button>
+                <div class="submit-block d-none d-md-block">
+                    <button v-if="!state.sending" type="button" @click="submitForm()">Отправить заявку</button>
+                    <UProgress v-if="state.sending" animation="carousel" size="md" />
+                </div>
             </div>
-            <div class="checkbox-row d-flex">
+            <div class="checkbox-row d-flex mt-2">
                 <div class="mt-1">
                     <div class="pretty p-image p-curve p-smooth p-bigger">
                         <input type="checkbox" v-model="state.agreed" />
@@ -68,11 +73,13 @@
                     </a>
                     <a href="javascript:void(0)" title="Посмотреть политику конфиденциальности" class="policy-link">политикой конфиденциальности</a>
                 </div>
-               
-                
             </div>
             <div class="input-error" v-if="state.showTncError && !state.agreed">
                 Обязательное поле
+            </div>
+            <div class="submit-block d-block d-md-none mt-3 d-flex align-items-stretch flex-column">
+                <button v-if="!state.sending" type="button" @click="submitForm()">Отправить заявку</button>
+                <UProgress v-if="state.sending" animation="carousel" size="md" />
             </div>
         </div>
     </form>
@@ -98,7 +105,8 @@ const state = reactive({
     message: '',
     agreed: false,
     file: null,
-    showTncError: false
+    showTncError: false,
+    sending: false,
 })
 
 const onFileChanged = function($event: Event) {
@@ -121,6 +129,10 @@ const shortenedName = function(name: String) {
 }
 
 const submitForm = function() {
+    if (state.sending) {
+        return;
+    }
+
     const isValid = emailInput.value.isValid && phoneInput.value.isValid && nameInput.value.isValid && state.agreed;
     if (!isValid) {
         console.log([emailInput.value.isValid, phoneInput.value.isValid, nameInput.value.isValid, state.agreed]);
@@ -129,24 +141,24 @@ const submitForm = function() {
         return;
     }
 
-    console.log(['SENDING FORM!', vars.API_URL]);
-
+    state.sending = true;
     axios.postForm(vars.API_URL, {
         name: state.name,
         email: state.email,
         message: state.message,
         phone: state.phone,
         file: state.file,
-    }).then(() => {
-        state.showTncError = false;
-        state.name = '';
-        state.phone = '';
-        state.message = '';
-        state.email = '';
-        state.agreed = false;
-        state.file = null;
+    }).then(async () => {
+        state.sending = false;
+        modalStore.show(false);
+        await new Promise(resolve => setTimeout(resolve, 300));
+
         modalStore.successShown = true;
-    }).catch((_) => {
+    }).catch(async (_) => {
+        state.sending = false;
+        modalStore.show(false);
+        await new Promise(resolve => setTimeout(resolve, 300));
+
         modalStore.failShown = true;
     });
 }
@@ -156,6 +168,10 @@ const submitForm = function() {
 
 #headlessui-portal-root, #app {
     .submit-form {
+        .attachment-box {
+            color: main.$base;
+        }
+
         .policy-link {
             color: main.$accent2 !important;
         }
@@ -164,7 +180,7 @@ const submitForm = function() {
             width: 100%;
         }
     
-        .flex-row {
+        .phone-email-row {
             margin: 20px 0;
             > div {
                 width: 100%;
@@ -181,6 +197,15 @@ const submitForm = function() {
     
         textarea {
             margin-bottom: 20px;
+        }
+
+        .submit-block {
+            min-height: 40px;
+            min-width: 215px;
+
+            progress {
+                color: main.$accent !important;
+            }
         }
 
         .button-row {
@@ -215,6 +240,26 @@ const submitForm = function() {
                 color: main.$comment;
             }
 
+        }
+    }
+
+    // // Medium devices (tablets, less than 992px)
+    @media (max-width: 767.98px) {
+        .submit-form {
+            .phone-email-row {
+                margin: 0px 0;
+                > div {
+                    width: 100%;
+        
+                    &:first-of-type {
+                        margin-right: 0;
+                    }
+            
+                    &:last-of-type {
+                        margin-left: 0;
+                    }
+                }
+            }
         }
     }
 }
