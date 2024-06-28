@@ -1,0 +1,13 @@
+<svg width="1539" height="493" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_29_8758)">
+<path d="M0 40C0 17.9086 17.9086 0 40 0H1499C1521.09 0 1539 17.9086 1539 40V453C1539 475.091 1521.09 493 1499 493H115.509C104.936 493 94.7922 488.813 87.2967 481.356L11.7874 406.228C4.24214 398.721 0 388.516 0 377.872V40Z" fill="#1F2833" fill-opacity="0.86"/>
+</g>
+<defs>
+<filter id="filter0_b_29_8758" x="-30" y="-30" width="1599" height="553" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="15"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_29_8758"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_29_8758" result="shape"/>
+</filter>
+</defs>
+</svg>

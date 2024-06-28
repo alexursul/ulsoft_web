@@ -11,7 +11,7 @@ $danger: #FF0C10;
 
 
 body, body #app {
-    background: $primary;
+    background: $counter;
     color: $base;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -28,17 +28,21 @@ body, body #app {
     }
 }
 
-#app {
+#headlessui-portal-root, #app {
     .ul-panel {
         background-color: rgba($primary, 0.86);
         padding: 25px 26px;
         color: $base;
         border-radius: 15px;
+
+        &.panel-sm {
+            padding: 18px 25px;
+        }
     }
 
     
     /// FONTS
-    h1, h2, h3 {
+    h1, h2, h3, p, h5 {
         font-family: 'Gotham', sans-serif;
     }
 
@@ -58,6 +62,7 @@ body, body #app {
         font-size: 50px;
         font-weight: 700;
         line-height: 65px;
+        margin-bottom: 20px;
     }
 
     h3 {
@@ -71,6 +76,30 @@ body, body #app {
         font-size: 24px;
         font-weight: 400;
         line-height: 31.2px;
+    }
+
+    h5 {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 23.4px;
+    }
+
+    
+    h6 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 21px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: $comment;
+    }
+
+    img {
+        display: inline;
     }
 
     /// CONTROLS
@@ -92,6 +121,14 @@ body, body #app {
         &:active {
             background: linear-gradient(180deg, darken($accent, 25%) 0%, darken($accent2, 20%) 100%); 
         }
+
+        &.button-sm {
+            padding: 15px;
+        }
+    }
+
+    input, textarea {
+        border-color: transparent;
     }
 }
 

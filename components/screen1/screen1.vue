@@ -10,14 +10,16 @@
                     </div>
                     <div class="col text-end">
                         <div class="ul-panel contacts">
-                            <span>
-                                <a :href="'mailto:' + email" title="Написать на почту"><img src="/img/svg/mail.svg" width="24" height="24" /></a>
-                                <a :href="'mailto:' + email" title="Написать на почту" class="d-none d-lg-inline">{{ email }}</a>
-                            </span>
-                            <span>
-                                <a :href="'tel:' + phone" title="Позвонить"><img src="/img/svg/phone.svg" width="24" height="24" /></a>
-                                <a :href="'tel:' + phone" title="Позвонить" class="d-none d-lg-inline">{{ phone }}</a>
-                            </span>
+                            <div class="d-flex">
+                                <a :href="'mailto:' + email" title="Написать на почту" class="d-flex me-4" target="_blank">
+                                    <img src="/img/svg/mail.svg" width="24" height="24" />
+                                    <span class="d-none d-lg-inline">{{ email }}</span>
+                                </a>
+                                <a :href="'tel:' + phone" title="Позвонить" target="_blank">
+                                    <img src="/img/svg/phone.svg" width="24" height="24" />
+                                    <span class="d-none d-lg-inline">{{ phone }}</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -28,7 +30,7 @@
                                 <h1>UL Soft</h1>
                                 <h4>Политическое учение Руссо, особенно в условиях политической нестабильности, представляет собой субъект власти</h4>
                                 <div>
-                                    <button>
+                                    <button type="button" @click="store.show(true)">
                                         Оставить заявку
                                     </button>
                                 </div>
@@ -37,7 +39,7 @@
 
                             <div class="benefits ul-panel">
                                 <div class="container-fluid">
-                                    <div class="row pt-xl-4 pt-lg-3">
+                                    <div class="row pt-2">
                                         <Screen1Benefit img="/img/icons/pc2.png" title="Стильный привлекательный и адаптивный дизайн"/>
                                         <Screen1Benefit img="/img/icons/thumbs.png" title="Пожалуй, самые демократичные цены на рынке"/>
                                         <Screen1Benefit img="/img/icons/pc.png" title="Техническая поддержка и наполнение сайта"/>
@@ -56,21 +58,19 @@
         </div>
     </div>
 </template>
-<script>
+<script setup>
     import * as vars from '@/constants/constants.ts';
-
-    export default {
-        setup() {
-            return { email: vars.EMAIL, phone: vars.PHONE }
-        },
-    }
+    import { useModalStore } from '@/stores/modal'
+    const store = useModalStore()
+    const email = vars.EMAIL
+    const phone = vars.PHONE
 </script>
 <style lang="scss">
 @use "/assets/scss/main.scss";
 
 #screen1 {
     background-image: url('/img/bg/bg1.png');
-    background-size: 100% 827px;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: main.$primary;
 }
@@ -83,7 +83,7 @@
 
     #panel-corner {
         height: $cornerHeight;
-        background: url('/img/svg/panel1_corner.svg') no-repeat;
+        background: url('/img/svg/panel1_corner2.svg') no-repeat;
         background-size: 370px $cornerHeight;
         background-position: 12px bottom;
 

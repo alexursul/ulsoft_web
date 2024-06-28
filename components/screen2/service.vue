@@ -3,11 +3,13 @@
         <h3>{{ title }}</h3>
         <slot></slot>
         <h3>От <span>{{ price }}</span> ₽</h3>
-        <button>Заказать</button>
+        <button @click="store.show(!store.shown)" type="button">Заказать</button>
     </div>
 </template>
 <script setup>
 defineProps(['price', 'title'])
+import { useModalStore } from '@/stores/modal'
+const store = useModalStore()
 </script>
 <style>
 #screen2 .service {

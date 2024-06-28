@@ -7,7 +7,7 @@
         url('Gotham-Book.woff2') format('woff2'),
         url('Gotham-Book.woff') format('woff'),
         url('Gotham-Book.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -20,7 +20,7 @@
         url('Gotham-Bold.woff2') format('woff2'),
         url('Gotham-Bold.woff') format('woff'),
         url('Gotham-Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-weight: 700;
     font-style: normal;
 }
 
